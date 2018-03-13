@@ -32,7 +32,7 @@ fi
 
 JAR_DIR=$(pwd)/target
 
-MAVEN_CONFIG_PATH=/opt/apache-maven/conf/settings.xml
+MAVEN_CONFIG_PATH=/opt/maven/conf/settings.xml
 echo "Generate files"
 cat <<EOF >${MAVEN_CONFIG_PATH}
 <?xml version="1.0" encoding="UTF-8"?>
