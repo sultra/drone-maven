@@ -1,18 +1,18 @@
 #!/bin/sh
 #处理环境变量获取及判空逻辑
-
-if [ ! -n "$PLUGIN_USER" ] ;then
-	echo "you have not input USER"
+#从secrets中获取账号密码
+if [ ! -n "$NEXUS_USERNAME" ] ;then
+	echo "you have not input NEXUS_USERNAME"
 	exit 1
 else 
-	USER="$PLUGIN_USER"
+	USER="$NEXUS_USERNAME"
 fi
 
-if [ ! -n "$PLUGIN_PASS" ] ;then
-	echo "you have not input PASS"
+if [ ! -n "$NEXUS_PASSWORD" ] ;then
+	echo "you have not input NEXUS_PASSWORD"
 	exit 1
 else 
-	PASS="$PLUGIN_PASS"
+	PASS="$NEXUS_PASSWORD"
 fi
 
 if [ ! -n "$PLUGIN_URL" ] ;then
@@ -23,8 +23,8 @@ else
 fi
 
 if [ ! -n "$PLUGIN_MAVEN_CMD" ] ;then
-	echo "you have not input MAVEN_CMD"
-	exit 1
+	echo "you have not input MAVEN_CMD,using default maven command"
+	MAVEN_CMD="clean package"
 else 
 	MAVEN_CMD="$PLUGIN_MAVEN_CMD"
 fi
@@ -101,7 +101,7 @@ echo "config file Done"
 
 echo "do mvn ..."
 # 执行maven命令
-echo "do mvn ${MAVEN_CMD}"
+echo "mvn ${MAVEN_CMD}"
 mvn ${MAVEN_CMD}
 
 echo "Uploading Nexus successful"
