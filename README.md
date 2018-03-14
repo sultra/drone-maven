@@ -1,5 +1,5 @@
 # Drone-Maven
-- 0.2.0
+- 0.2.1
 
 - 基于maven构件JAVA应用的一个drone的插件，可以发布到**Nexus**（具体看应用中的pom.xml）
 
