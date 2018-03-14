@@ -46,12 +46,12 @@ cat <<EOF >${MAVEN_CONFIG_PATH}
   <servers>
     <server>  
      <id>releases</id>  
-     <username>${PLUGIN_USER}</username>  
+     <username>${USER}</username>  
      <password>${PASS}</password>  
     </server>  
     <server>  
      <id>snapshots</id>  
-     <username>${PLUGIN_USER}</username>  
+     <username>${USER}</username>  
      <password>${PASS}</password>  
    </server>  
   </servers>
