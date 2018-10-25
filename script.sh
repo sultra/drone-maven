@@ -29,8 +29,15 @@ else
 	MAVEN_CMD="$PLUGIN_MAVEN_CMD"
 fi
 
-
-JAR_DIR=$(pwd)/target
+if [ ! -n "$PLUGIN_ISMODULE" ] ;then
+  ISM=false
+else
+  if [ "$PLUGIN_ISMODULE" = "true" ] ; then
+    ISM=true
+  else
+    ISM=false
+  fi
+fi
 
 MAVEN_CONFIG_PATH=/opt/maven/conf/settings.xml
 echo "Generate files"
@@ -107,4 +114,13 @@ mvn ${MAVEN_CMD}
 echo "Uploading Nexus successful"
 echo "get Jar file"
 
-mv ${JAR_DIR}/*.jar app.jar
+
+if [ "$ISM" = true ] ; then
+  echo "build type is jar package"
+  echo "build done"
+else
+  echo "build type is app"
+  JAR_DIR=$(pwd)/target
+  mv ${JAR_DIR}/*.jar app.jar
+fi
+
